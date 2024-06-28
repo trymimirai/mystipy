@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mystipy"
-version = "0.7.2"
+version = "0.7.3"
 description = "A simple Python data obfuscation utility."
 authors = [{ name = "Justin Garofolo", email = "justin@garofolo.net" }]
 license = { text = "MIT" }
-# readme = "README.md"
+readme = "README.md"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Natural Language :: English",
@@ -32,7 +32,7 @@ requires-python = ">=3.8"
 
 [project.urls]
 Homepage = "https://github.com/ooojustin/mystipy"
-# Documentation = "https://github.com/ooojustin/mystipy#readme"
+Documentation = "https://github.com/ooojustin/mystipy#readme"
 Source = "https://github.com/ooojustin/mystipy"
 Tracker = "https://github.com/ooojustin/mystipy/issues"
 
