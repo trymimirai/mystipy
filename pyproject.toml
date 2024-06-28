@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mystipy"
-version = "0.7.3"
+version = "0.7.4"
 description = "A simple Python data obfuscation utility."
 authors = [{ name = "Justin Garofolo", email = "justin@garofolo.net" }]
 license = { text = "MIT" }
