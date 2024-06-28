@@ -10,7 +10,7 @@ default_salt_sz = 16
 def xor(data, key):
     return bytes(a ^ b for a, b in zip(data, key * (len(data) // len(key) + 1)))
 
-def obfuscate_data(input_data, key, salt_sz = default_salt_sz, hex = True):
+def obfuscate(input_data, key, salt_sz = default_salt_sz, hex = True):
     salt = os.urandom(salt_sz)
     input_data = salt + input_data
     encoded_content = base64.b64encode(input_data)
@@ -24,7 +24,7 @@ def obfuscate_data(input_data, key, salt_sz = default_salt_sz, hex = True):
         return gzipped_data.hex().encode()
     return gzipped_data
 
-def deobfuscate_data(input_data, key, salt_sz = default_salt_sz, hex = True):
+def deobfuscate(input_data, key, salt_sz = default_salt_sz, hex = True):
     if hex:
         input_data = bytes.fromhex(input_data.decode())
     buffer = BytesIO(input_data)
@@ -42,6 +42,10 @@ def read_file(file_path):
 def write_file(file_path, data):
     with open(file_path, 'wb') as file:
         file.write(data)
+
+# function aliases
+mystipy = obfuscate
+demystipy = deobfuscate
 
 def main():
     parser = argparse.ArgumentParser(description = "Obfuscate or deobfuscate the contents of the file in a very simple way.")
@@ -65,7 +69,7 @@ def main():
             output_path = input("Output file path: ")
         else:
             # they're obfuscating it, just add an extension to the file
-            output_path = input_path + (".bin" if binary else ".hex")
+            output_path = input_path + (".myst.bin" if binary else ".myst")
     elif not input_path and not output_path:
         # they didn't specify either input/output path, so prompt for both
         input_path = input("Input file path: ")
@@ -91,9 +95,9 @@ def main():
     verb = ("de" if reverse else "") + "obfuscate"
     try:
         if reverse:
-            output_data = deobfuscate_data(input_data, key, args.salt, not binary)
+            output_data = deobfuscate(input_data, key, args.salt, not binary)
         else:
-            output_data = obfuscate_data(input_data, key, args.salt, not binary)
+            output_data = obfuscate(input_data, key, args.salt, not binary)
         write_file(output_path, output_data)
         print(f"File has been {verb}d.")
     except Exception as ex:
