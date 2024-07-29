@@ -1,5 +1,8 @@
 # mystipy
 
+[![PyPI - Version](https://img.shields.io/pypi/v/mystipy?color=BB34E2)](https://pypi.org/project/mystipy/)
+[![PyPI - License](https://img.shields.io/pypi/l/mystipy)](https://github.com/ooojustin/mystipy/blob/main/LICENSE)
+
 This is an extremely simple command-line utility for obfuscating and deobfuscating data.
 
 ## Features
